@@ -1,0 +1,75 @@
+// 
+// _card.scss
+// 
+
+.card {
+  margin-bottom: $grid-gutter-width;
+  box-shadow: $box-shadow;
+}
+
+.card-drop {
+  color: $body-color;
+}
+
+.card-title {
+  font-size: 16px;
+  margin: 0 0 7px 0;
+}
+
+.card-title-desc {
+  color: $card-title-desc;
+  margin-bottom: 24px;  
+}
+
+.unpaid-installment {
+  background-color: #ed2939;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  height: 40px;
+}
+
+
+.paid-installment {
+  background-color: #3cb043;
+  color: white;
+  height: 40px;
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: not-allowed;
+    }
+.fees-progress {
+  background-color: #f8b028;
+}
+.paying {
+  background-color: rgba(255, 191, 0, 0.76);
+}
+
+.classnameselect {
+  text-align: center;
+    padding: 10px 0px;
+    background: white;
+    border: 1px solid #ddd;
+    margin: 0px 10px;
+    width: 25%;
+    box-shadow: 10px 20px 30px 10px #b3d9ff;
+    border-radius: 60px 60px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.classnameselect:hover {
+  background: #66b3ff;
+  color:white
+}
+
+
+
+
+
+
+
