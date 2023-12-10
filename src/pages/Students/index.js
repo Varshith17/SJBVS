@@ -3,10 +3,10 @@ import MetaTags from "react-meta-tags"
 import { MDBDataTable } from "mdbreact"
 import { Row, Col, Card, CardBody, CardTitle, Modal } from "reactstrap"
 import { connect } from "react-redux"
-import { get } from "../../helpers/api_helper"
+import { get,post,del } from "../../helpers/api_helper"
 import AddStudent from "./AddStudent"
 import { CSVLink } from "react-csv"
-
+import SweetAlert from "react-bootstrap-sweetalert"
 //Import Action to copy breadcrumb items from local state to redux state
 import { setBreadcrumbItems } from "../../store/actions"
 
@@ -31,6 +31,8 @@ const Students = props => {
   const [edit, setEdit] = useState(false)
   const [selectedCalss, setSelectedClass] = useState("")
   const [exportData, setExportData] = useState([])
+  const [deleteAlert,setDeleteAlert] =  useState(false);
+  const [deleteId,setDeleteId] = useState("");
 
   const headers = [
     { label: "Name", key: "name" },
@@ -73,8 +75,9 @@ const Students = props => {
         setExportData(res)
         convertToTableData(res)
       })
-      .catch(err =>{ console.log(err)
-        alert("Backend Error, Contact administrator " + err);
+      .catch(err => {
+        console.log(err)
+        alert("Backend Error, Contact administrator " + err)
       })
   }
 
@@ -82,18 +85,30 @@ const Students = props => {
     const studentsList = []
     data.map(student => {
       const action = (
-        <div>
-          <button
-            type="button"
-            className="btn btn-primary btn-md ms-2"
-            onClick={() => tog_large(student, true)}
-          >
-            <i
-              className="mdi mdi-sm mdi-account-edit-outline"
-              style={{ fontSize: "12px" }}
-            ></i>{" "}
-            Edit
-          </button>
+        <div className="d-flex">
+          <div>
+            <button
+              type="button"
+              className="btn btn-primary btn-md ms-2"
+              onClick={() => tog_large(student, true)}
+            >
+              <i
+                className="mdi mdi-sm mdi-account-edit-outline"
+                style={{ fontSize: "12px" }}
+              ></i>{" "}
+              Edit
+            </button>
+          </div>
+          <div>
+            <button
+              type="button"
+              className="btn btn-danger btn-md ms-2 ml-2"
+              onClick={() => handleDelete(student.uid)}
+            >
+             
+              Delete
+            </button>
+          </div>
         </div>
       )
       const mobile_number = student.primary_mobile_no
@@ -155,6 +170,22 @@ const Students = props => {
     getStudents(e.target.value)
   }
 
+  const handleConfirmDelete = () => {
+    del(`/deleteStudent/${deleteId}`)
+    .then(res => {
+      refreshTable();
+    })
+    .catch(err => {
+      console.log(err)
+      alert("Backend Error, Contact administrator " + err)
+    })
+  }
+
+  const handleDelete =(uid)=>{
+    setDeleteId(uid);
+    setDeleteAlert(true)
+  }
+  
   return (
     <React.Fragment>
       <MetaTags>
@@ -193,6 +224,25 @@ const Students = props => {
           />
         </div>
       </Modal>
+      {deleteAlert ? (
+                <SweetAlert
+                  title="Are you sure?"
+                  warning
+                  showCancel
+                  confirmButtonText="Yes, delete it!"
+                  confirmBtnBsStyle="success"
+                  cancelBtnBsStyle="danger"
+                  onConfirm={() => {
+                    handleConfirmDelete();
+                    setDeleteAlert(false)
+                   
+                  }}
+                  onCancel={() => setDeleteAlert(false)}
+                >
+                  You won't be able to revert this!
+                </SweetAlert>
+              ) : null}
+
       {selectedCalss === "" ? (
         <React.Fragment>
           <h3>Select class</h3>

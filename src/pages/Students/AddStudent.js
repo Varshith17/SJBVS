@@ -142,9 +142,9 @@ const AddStudent = props => {
           })
           .catch(err => {
             console.log(err)
-            
+
             setFailure(true)
-            alert("Backend Error, Contact administrator " + err);
+            alert("Backend Error, Contact administrator " + err)
           })
       } else {
         post("/addStudent", data)
@@ -155,7 +155,7 @@ const AddStudent = props => {
           .catch(err => {
             console.log(err)
             setFailure(true)
-            alert("Backend Error, Contact administrator " + err);
+            alert("Backend Error, Contact administrator " + err)
           })
       }
     }
@@ -290,7 +290,7 @@ const AddStudent = props => {
                   <Col md="3">
                     <div className="mb-3 d-flex flex-column">
                       <Label htmlFor="validationCustom01">
-                        Student Profile
+                        Student Profile <span style={{ color: "red" }}>*</span>
                       </Label>
                       <img width={"150px"} height={"130px"} src={imgSrc} />
                     </div>
@@ -343,7 +343,7 @@ const AddStudent = props => {
                 <Row>
                   <Col md="6" lg="4">
                     <div className="mb-3">
-                      <Label htmlFor="validationCustom01">Student Name</Label>
+                      <Label htmlFor="validationCustom01">Student Name <span style={{ color: "red" }}>*</span></Label>
                       <AvField
                         name="studentName"
                         placeholder="Student Name"
@@ -363,7 +363,7 @@ const AddStudent = props => {
 
                   <Col md="6" lg="4">
                     <div className="mb-3">
-                      <Label htmlFor="validationCustom01">Class</Label>
+                      <Label htmlFor="validationCustom01">Class <span style={{ color: "red" }}>*</span></Label>
 
                       <AvField
                         type="select"
@@ -399,7 +399,7 @@ const AddStudent = props => {
 
                   <Col md="6" lg="4">
                     <div className="mb-3">
-                      <Label htmlFor="validationCustom02">UID</Label>
+                      <Label htmlFor="validationCustom02">UID <span style={{ color: "red" }}>*</span></Label>
                       <AvField
                         name="uid"
                         value={uid}

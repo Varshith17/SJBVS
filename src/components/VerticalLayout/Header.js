@@ -151,7 +151,7 @@ const Header = props => {
             </div> */}
           </div>
 
-          <h3>Shree Bhagya Jyothi Vidya Samsthe</h3>
+          <h3>Shri Bhagya Jyothi Vidya Samsthe</h3>
           
           <div className="d-flex">
             {/* <form className="app-search d-none d-lg-block">

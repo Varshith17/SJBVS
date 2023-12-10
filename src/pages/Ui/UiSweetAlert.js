@@ -52,6 +52,7 @@ const UiSweetAlert = (props) => {
   const [ajax_div, setajax_div] = useState(false)
   const [final_step, setfinal_step] = useState(false)
   const [timeralert, settimeralert] = useState(null);
+  
 
   function handleStep1Change(e) {
     setstep1_txt(e.target.value)

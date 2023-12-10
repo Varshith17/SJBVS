@@ -26,7 +26,7 @@ const AddStudent = props => {
   const [student, setStudent] = useState({})
   const [show, setShow] = useState(false)
   useEffect(async () => {
-    await get(`/students/getAStudent/${props.uid}`)
+    await get(`/getAStudent/${props.uid}`)
       .then(res => {
         setStudent(res)
         setShow(true)

@@ -132,7 +132,7 @@ const AddFees = props => {
             <img src={logo1} alt="" height="60" />
 
             <h3 className="modal-title mt-0" id="myLargeModalLabel">
-              Shree Bhagya Jyothi Vidya Samsthe
+              Shri Bhagya Jyothi Vidya Samsthe
             </h3>
             <div></div>
           </div>

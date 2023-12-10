@@ -39,7 +39,7 @@ const Login = props => {
       <MetaTags>
         <title>Login | Leads Kendriya Vidyalaya</title>
       </MetaTags>
-      <div className="account-pages my-5 pt-sm-5">
+      <div className="account-pages py-3 pt-sm-5">
         <Container>
           <Row className="justify-content-center">
             <Col md={8} lg={6} xl={5}>
@@ -55,7 +55,7 @@ const Login = props => {
                   </div>
                   <h3 className="text-center mt-1 mb-2">
                     <Link to="/" className="d-block auth-logo">
-                      Shree Bhagya Jyothi Vidya Samsthe
+                      Shri Bhagya Jyothi Vidya Samsthe
                     </Link>
                   </h3>
                   <div className="p-3">
